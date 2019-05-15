@@ -72,11 +72,11 @@ public class Sorter {
         quickSort(0, length - 1);
     }
 
-    private void quickSort(int lowerIndex, int higherIndex) {
-        int i = lowerIndex;
-        int j = higherIndex;
+    private void quickSort(int low, int high) {
+        int i = low;
+        int j = high;
 
-        int pivot = this.arr[lowerIndex + (higherIndex - lowerIndex) / 2];
+        int pivot = this.arr[low + (high - low) / 2];
         while (i <= j) {
             while (this.arr[i] < pivot) {
                 i++;
@@ -93,12 +93,12 @@ public class Sorter {
             }
         }
 
-        if (lowerIndex < j) {
-            quickSort(lowerIndex, j);
+        if (low < j) {
+            quickSort(low, j);
         }
 
-        if (i < higherIndex) {
-            quickSort(i, higherIndex);
+        if (i < high) {
+            quickSort(i, high);
         }
     }
 }
