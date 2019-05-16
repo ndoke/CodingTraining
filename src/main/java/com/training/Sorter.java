@@ -1,8 +1,6 @@
 package com.training;
 
 public class Sorter {
-    public int arr[];
-
     public Sorter() { }
 
     public void doBubbleSort(int a[]) {
@@ -10,13 +8,17 @@ public class Sorter {
             return;
         }
 
-        this.arr = a;
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int t = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = t;
+        boolean flag = false;
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = 1; j < a.length - i; j++) {
+                if (a[j] < a[j - 1]) {
+                    int t = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = t;
+                    flag = true;
+                }
+                if (!flag) {
+                    break;
                 }
             }
         }
@@ -27,20 +29,19 @@ public class Sorter {
             return;
         }
 
-        this.arr = a;
-        for (int i = 0; i < arr.length - 1; i++) {
-            int min = arr[i];
+        for (int i = 0; i < a.length - 1; i++) {
+            int min = a[i];
             int minInd = i;
-            for (int j = i; j < arr.length; j++) {
-                if (arr[j] < min) {
-                    min = arr[j];
+            for (int j = i; j < a.length; j++) {
+                if (a[j] < min) {
+                    min = a[j];
                     minInd = j;
                 }
             }
 
-            int temp = arr[minInd];
-            arr[minInd] = arr[i];
-            arr[i] = temp;
+            int temp = a[minInd];
+            a[minInd] = a[i];
+            a[i] = temp;
         }
     }
 
@@ -49,56 +50,54 @@ public class Sorter {
             return;
         }
 
-        this.arr = a;
-        for (int i = 1; i < arr.length; ++i) {
-            int key = arr[i];
+        for (int i = 1; i < a.length; ++i) {
+            int key = a[i];
             int j = i - 1;
 
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
+            while (j >= 0 && a[j] > key) {
+                a[j + 1] = a[j];
                 j = j - 1;
             }
-            arr[j + 1] = key;
+            a[j + 1] = key;
         }
     }
 
     public void doQuickSort(int[] a) {
-        this.arr = a;
         if (a == null || a.length == 0) {
             return;
         }
 
         int length = a.length;
-        quickSort(0, length - 1);
+        quickSort(0, length - 1, a);
     }
 
-    private void quickSort(int low, int high) {
+    private void quickSort(int low, int high, int[] a) {
         int i = low;
         int j = high;
 
-        int pivot = this.arr[low + (high - low) / 2];
+        int pivot = a[low + (high - low) / 2];
         while (i <= j) {
-            while (this.arr[i] < pivot) {
+            while (a[i] < pivot) {
                 i++;
             }
-            while (this.arr[j] > pivot) {
+            while (a[j] > pivot) {
                 j--;
             }
             if (i <= j) {
-                int temp = this.arr[i];
-                this.arr[i] = this.arr[j];
-                this.arr[j] = temp;
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
                 i++;
                 j--;
             }
         }
 
         if (low < j) {
-            quickSort(low, j);
+            quickSort(low, j, a);
         }
 
         if (i < high) {
-            quickSort(i, high);
+            quickSort(i, high, a);
         }
     }
 }
