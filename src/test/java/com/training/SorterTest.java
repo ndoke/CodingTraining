@@ -11,8 +11,8 @@ public class SorterTest {
 
     @Before
     public void setUp() {
-        input = new int[][]{null, {}, {8, 0, -1, 9, 3, 5, 2}, {8, 1, 1, 9, 1, 5, 2}};
-        expected = new int[][]{null, {}, {-1, 0, 2, 3, 5, 8, 9}, {1, 1, 1, 2, 5, 8, 9}};
+        input = new int[][]{null, {}, {8, 0, -1, 9, 3, 5, 2}, {8, 1, 1, 9, 1, 5, 2}, {64, 34, 25, 12, 22, 11, 90}};
+        expected = new int[][]{null, {}, {-1, 0, 2, 3, 5, 8, 9}, {1, 1, 1, 2, 5, 8, 9}, {11, 12, 22, 25, 34, 64, 90}};
     }
 
     @Test

@@ -8,18 +8,20 @@ public class Sorter {
             return;
         }
 
-        boolean flag = false;
+        boolean swappingHappened;
+        int temp;
         for (int i = 0; i < a.length - 1; i++) {
-            for (int j = 1; j < a.length - i; j++) {
-                if (a[j] < a[j - 1]) {
-                    int t = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = t;
-                    flag = true;
+            swappingHappened = false;
+            for (int j = 0; j < a.length - i - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                    swappingHappened = true;
                 }
-                if (!flag) {
-                    break;
-                }
+            }
+            if (!swappingHappened) {
+                break;
             }
         }
     }
@@ -32,7 +34,7 @@ public class Sorter {
         for (int i = 0; i < a.length - 1; i++) {
             int min = a[i];
             int minInd = i;
-            for (int j = i; j < a.length; j++) {
+            for (int j = i + 1; j < a.length; j++) {
                 if (a[j] < min) {
                     min = a[j];
                     minInd = j;
