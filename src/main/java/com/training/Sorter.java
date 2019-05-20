@@ -1,41 +1,61 @@
 package com.training;
 
 public class Sorter {
-    public Sorter() { }
+    public Sorter()
+    { }
 
-    public void doBubbleSort(int a[]) {
-        if (a == null) {
+    /**
+     * Performs Bubble sort.
+     * @param a - Integer array to be sorted.
+     */
+    public void doBubbleSort(int a[])
+    {
+        if (a == null)
+        {
             return;
         }
 
         boolean swappingHappened;
         int temp;
-        for (int i = 0; i < a.length - 1; i++) {
+        for (int i = 0; i < a.length - 1; i++)
+        {
             swappingHappened = false;
-            for (int j = 0; j < a.length - i - 1; j++) {
-                if (a[j] > a[j + 1]) {
+            for (int j = 0; j < a.length - i - 1; j++)
+            {
+                if (a[j] > a[j + 1])
+                {
                     temp = a[j];
                     a[j] = a[j + 1];
                     a[j + 1] = temp;
                     swappingHappened = true;
                 }
             }
-            if (!swappingHappened) {
+            if (!swappingHappened)
+            {
                 break;
             }
         }
     }
 
-    public void doSelectionSort(int a[]) {
-        if (a == null) {
+    /**
+     * Performs Selection sort.
+     * @param a - Integer array to be sorted.
+     */
+    public void doSelectionSort(int a[])
+    {
+        if (a == null)
+        {
             return;
         }
 
-        for (int i = 0; i < a.length - 1; i++) {
+        for (int i = 0; i < a.length - 1; i++)
+        {
             int min = a[i];
             int minInd = i;
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[j] < min) {
+            for (int j = i + 1; j < a.length; j++)
+            {
+                if (a[j] < min)
+                {
                     min = a[j];
                     minInd = j;
                 }
@@ -47,16 +67,24 @@ public class Sorter {
         }
     }
 
-    public void doInsertionSort(int a[]) {
-        if (a == null) {
+    /**
+     * Performs Insertion sort.
+     * @param a - Integer array to be sorted.
+     */
+    public void doInsertionSort(int a[])
+    {
+        if (a == null)
+        {
             return;
         }
 
-        for (int i = 1; i < a.length; ++i) {
+        for (int i = 1; i < a.length; ++i)
+        {
             int key = a[i];
             int j = i - 1;
 
-            while (j >= 0 && a[j] > key) {
+            while (j >= 0 && a[j] > key)
+            {
                 a[j + 1] = a[j];
                 j = j - 1;
             }
@@ -64,8 +92,14 @@ public class Sorter {
         }
     }
 
-    public void doQuickSort(int[] a) {
-        if (a == null || a.length == 0) {
+    /**
+     * Performs Quick sort.
+     * @param a - Integer array to be sorted.
+     */
+    public void doQuickSort(int[] a)
+    {
+        if (a == null || a.length == 0)
+        {
             return;
         }
 
@@ -73,19 +107,24 @@ public class Sorter {
         quickSort(0, length - 1, a);
     }
 
-    private void quickSort(int low, int high, int[] a) {
+    private void quickSort(int low, int high, int[] a)
+    {
         int i = low;
         int j = high;
 
         int pivot = a[low + (high - low) / 2];
-        while (i <= j) {
-            while (a[i] < pivot) {
+        while (i <= j)
+        {
+            while (a[i] < pivot)
+            {
                 i++;
             }
-            while (a[j] > pivot) {
+            while (a[j] > pivot)
+            {
                 j--;
             }
-            if (i <= j) {
+            if (i <= j)
+            {
                 int temp = a[i];
                 a[i] = a[j];
                 a[j] = temp;
@@ -94,11 +133,13 @@ public class Sorter {
             }
         }
 
-        if (low < j) {
+        if (low < j)
+        {
             quickSort(low, j, a);
         }
 
-        if (i < high) {
+        if (i < high)
+        {
             quickSort(i, high, a);
         }
     }
